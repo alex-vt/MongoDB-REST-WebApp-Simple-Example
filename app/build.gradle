@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+repositories {
+    mavenCentral();
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+compileJava {
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+}
+
+war {
+    baseName = 'mongorest'
+}
+
+dependencies {
+    compile 'com.sun.jersey:jersey-servlet:1.19'
+    compile 'com.sun.jersey:jersey-json:1.19'
+    compile 'com.sun.jersey.contribs:jersey-multipart:1.19'
+    compile 'org.codehaus.jackson:jackson-jaxrs:1.9.13'
+    compile 'org.apache.commons:commons-lang3:3.0'
+    compile 'commons-codec:commons-codec:1.10'
+}
+
