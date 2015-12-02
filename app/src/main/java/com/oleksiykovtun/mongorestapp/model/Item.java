@@ -1,8 +1,12 @@
 package com.oleksiykovtun.mongorestapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.oleksiykovtun.mongorestapp.util.Base64Converter;
+
 /**
  * Item model (POJO)
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Item extends Entry {
 
     private String name;
@@ -10,12 +14,7 @@ public class Item extends Entry {
     public Item() { }
 
     public Item(String name) {
-        setId(name);
         setName(name);
-    }
-
-    public void setId(String id) {
-        this.id = Item.class.getSimpleName() + "_" + id.hashCode();
     }
 
     public String getName() {
@@ -24,5 +23,6 @@ public class Item extends Entry {
 
     public void setName(String name) {
         this.name = name;
+        this.id = Item.class.getSimpleName() + "_" + Base64Converter.getBase64StringFromString(name);
     }
 }

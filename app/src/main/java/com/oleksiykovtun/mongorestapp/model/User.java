@@ -1,8 +1,12 @@
 package com.oleksiykovtun.mongorestapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.oleksiykovtun.mongorestapp.util.Base64Converter;
+
 /**
  * User model (POJO)
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends Entry {
 
     private String name;
@@ -11,13 +15,8 @@ public class User extends Entry {
     public User() { }
 
     public User(String name, String password) {
-        setId(name);
         setName(name);
         setPassword(password);
-    }
-
-    public void setId(String id) {
-        this.id = User.class.getSimpleName() + "_" + id.hashCode();
     }
 
     public String getName() {
@@ -26,6 +25,7 @@ public class User extends Entry {
 
     public void setName(String name) {
         this.name = name;
+        this.id = User.class.getSimpleName() + "_" + Base64Converter.getBase64StringFromString(name);
     }
 
     public String getPassword() {

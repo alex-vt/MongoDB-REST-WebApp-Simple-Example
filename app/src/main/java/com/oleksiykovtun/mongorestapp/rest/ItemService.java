@@ -1,7 +1,7 @@
 package com.oleksiykovtun.mongorestapp.rest;
 
 import com.oleksiykovtun.mongorestapp.Api;
-import com.oleksiykovtun.mongorestapp.db.InMemorySimpleDb;
+import com.oleksiykovtun.mongorestapp.db.DbInstanceProvider;
 import com.oleksiykovtun.mongorestapp.model.Item;
 
 import java.util.Collection;
@@ -23,28 +23,30 @@ public class ItemService extends GeneralService {
     @GET
     @Path(Api.GET_ALL)
     @Produces(JSON)
-    public Collection getAll() {
-        return InMemorySimpleDb.getEntriesByType(Item.class);
+    public Collection getAll() throws Throwable {
+        return DbInstanceProvider.getDb().getEntriesByType(Item.class);
     }
 
     @GET
     @Path(Api.GET + "/{id}")
     @Produces(JSON)
-    public Item get(@PathParam("id") String id) {
-        return (Item) InMemorySimpleDb.getEntryById(id);
+    public Item get(@PathParam("id") String id) throws Throwable {
+        return (Item) DbInstanceProvider.getDb().getEntryByIdAndType(id, Item.class);
     }
 
     @PUT
     @Path(Api.ADD)
     @Consumes(JSON)
-    public void add(Item item) {
-        InMemorySimpleDb.addEntry(item);
+    @Produces(TEXT)
+    public String add(Item item) throws Throwable {
+        DbInstanceProvider.getDb().addEntryIfNotExists(item);
+        return item.getId();
     }
 
     @DELETE
     @Path(Api.DELETE + "/{id}")
-    public void delete(@PathParam("id") String id) {
-        InMemorySimpleDb.deleteEntryById(id);
+    public void delete(@PathParam("id") String id) throws Throwable {
+        DbInstanceProvider.getDb().deleteEntryById(id);
     }
 
 }

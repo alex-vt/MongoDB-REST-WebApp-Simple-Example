@@ -113,14 +113,13 @@ Example of response body for request `/users/get/User_5273`:
 
 #### /users/add
 
-| HTTP Method | Consumes (Content-Type header) | Description |
-| ----------- | ------------------------------ | ----------- |
-| PUT | *JSON* (`Content-Type: application/json;charset=utf-8`) | Adds a new user |
+| HTTP Method | Consumes (Content-Type header) | Produces (Content-Type header) | Description |
+| ----------- | ------------------------------ | ------------------------------ | ----------- |
+| PUT | *JSON* (`Content-Type: application/json;charset=utf-8`) | Text (`Content-Type: text/plain;charset=utf-8`) | Adds a new user and returns its ID |
 
-Example of request body:
+Example of request body (`id` is not needed, ignored):
 
     {
-        "id": "User_9165",
         "name": "Test User 3",
         "password": "qwerty"
     }
@@ -165,14 +164,13 @@ Example of response body for request `/items/get/Item_1893`:
 
 #### /items/add
 
-| HTTP Method | Consumes (Content-Type header) | Description |
-| ----------- | ------------------------------ | ----------- |
-| PUT | *JSON* (`Content-Type: application/json;charset=utf-8`) | Adds a new item |
+| HTTP Method | Consumes (Content-Type header) | Produces (Content-Type header) | Description |
+| ----------- | ------------------------------ | ------------------------------ | ----------- |
+| PUT | *JSON* (`Content-Type: application/json;charset=utf-8`) | Text (`Content-Type: text/plain;charset=utf-8`) | Adds a new item and returns its ID |
 
-Example of request body:
+Example of request body (`id` is not needed, ignored):
 
     {
-        "id": "Item_8652",
         "name": "Test Item 3"
     }
 
