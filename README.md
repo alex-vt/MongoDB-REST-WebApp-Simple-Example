@@ -8,11 +8,6 @@ Features:
 * MongoDB persistence for model objects
 * DB interface
 
-## Instructions
-
-You can test the already deployed test web app's API 
-or build and deploy the web app on your server. 
-
 ### API documentation
 
 API documentation is available [here](app/README.md).
