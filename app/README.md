@@ -13,8 +13,6 @@ You can use a REST client to test the API, for example, a third party app
 ](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) 
 for Chrome browser.
 
-It's recommended to use JSON libraries for managing JSON objects in apps being developed.
-
 On success, response status codes will be in range 200-299.
 
 
@@ -68,10 +66,7 @@ Example of an Event object:
 
 ### API methods
 
-API method URLs are composed from API server hostname and method paths.
-
-For example, for hostname `http://dev.oleksiykovtun.com` and method path `/users/get/all` 
-the full URL is `http://dev.oleksiykovtun.com/users/get/all`.
+API endpoint URLs are composed from API server hostname and method paths.
 
 The list of API method paths:
 
